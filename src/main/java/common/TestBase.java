@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class TestBase {
 	public WebDriver driver;
@@ -47,5 +48,18 @@ public class TestBase {
 		element.sendKeys(text);
 		
 	}
+	
+	public By getXpathByParam(String xpath, String text) {
+		String newXpath = xpath.replace("{@param}", text);
+		By rdLocator = By.xpath(newXpath);	
+		return rdLocator;
+	}
+	
+	public void selectDropDownBoxByVisibleText(By dropDownLocator, String visibleText) {
+		WebElement dropDownElement = driver.findElement(dropDownLocator);
+		Select dropDownBox = new Select(dropDownElement);
+		dropDownBox.selectByVisibleText(visibleText);
+	}
+	
 
 }

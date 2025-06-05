@@ -8,11 +8,12 @@ public class AutomationPracticeFormPage extends Page {
 	public By txtFirstName=By.id("firstName");
 	public By txtLastName=By.id("lastName");
 	public By txtEmail=By.id("userEmail");
-	public By txtGender=By.xpath("//label[text()='{@param}']");
+	public String rdGenderStr="//label[text()='{@param}']";
 	public By txtMobile=By.id("userNumber");
 	public By txtDateOfBirth=By.id("dateOfBirthInput");
+	public By drYear = By.xpath("//select[@class='react-datepicker__year-select']");
 	public By txtSubject=By.className("subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3");
-	public By txtHobbies=By.xpath("//label[text()='{@param}']");
+	public String txtHobbies="//label[text()='{@param}']";
 	public By upLoadPic=By.id("uploadPicture");
 	public By txtCurrentAddress=By.id("currentAddress");
 	public AutomationPracticeFormPage(WebDriver dr) {
@@ -23,12 +24,19 @@ public class AutomationPracticeFormPage extends Page {
 		testBase.input(txtFirstName, firstName);
 		testBase.input(txtLastName, lastName);
 		testBase.input(txtEmail, email);
-		testBase.input(txtGender, gender);
+		By rdGenderLocator = testBase.getXpathByParam(rdGenderStr, gender);
+		testBase.clickOnElement(rdGenderLocator);
 		testBase.input(txtMobile, mobile);
 		testBase.input(txtDateOfBirth, dateOFBirth);
 		testBase.input(txtSubject, subjects);
-		testBase.input(txtHobbies, hobbies);
+//		testBase.input(txtHobbies, hobbies);
 		testBase.input(txtCurrentAddress, currentAddress);
+	}
+	
+	public void inputDate(String dateOfBirth) {
+		String[] dateOfBirths = dateOfBirth.split(" ");
+		testBase.clickOnElement(txtDateOfBirth);
+		testBase.selectDropDownBoxByVisibleText(drYear,dateOfBirths[2].trim());
 	}
 
 }
