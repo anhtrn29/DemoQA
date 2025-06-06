@@ -12,6 +12,8 @@ public class AutomationPracticeFormPage extends Page {
 	public By txtMobile=By.id("userNumber");
 	public By txtDateOfBirth=By.id("dateOfBirthInput");
 	public By drYear = By.xpath("//select[@class='react-datepicker__year-select']");
+	public By drMonth = By.xpath("//select[@class='react-datepicker__month-select']");
+	public By drDate = By.xpath("//div[@class='react-datepicker__day react-datepicker__day--003 react-datepicker__day--selected']");
 	public By txtSubject=By.className("subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3");
 	public String txtHobbies="//label[text()='{@param}']";
 	public By upLoadPic=By.id("uploadPicture");
@@ -37,6 +39,8 @@ public class AutomationPracticeFormPage extends Page {
 		String[] dateOfBirths = dateOfBirth.split(" ");
 		testBase.clickOnElement(txtDateOfBirth);
 		testBase.selectDropDownBoxByVisibleText(drYear,dateOfBirths[2].trim());
+		testBase.selectDropDownBoxByVisibleText(drMonth, dateOfBirths[1].trim());
+		testBase.selectDropDownBoxByVisibleText(drDate, dateOfBirths[0].trim());
 	}
 
 }

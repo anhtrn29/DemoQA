@@ -13,10 +13,17 @@ public void submitDataSuccessfully() {
 	String gender = "Female";
 	String mobile = "123";
 	String dateOFBirth = "3 June 1999";
-//	String subjects, String hobbies, String picture, String currentAddress, String stateAndCity
+	String subjects = "selenium java";
+	String hobbies = "listening to music";
+	String picture = "";
+	String currentAddress = "a";
+	String stateAndCity = "ho chi minh city";
+	
 	HomePage homePage = new HomePage(testBase.driver);
 	FormsPage formsPage = homePage.clickOnFormsPage();
 	AutomationPracticeFormPage automationPracticeFormPage = formsPage.clickOnPracticeForm();
+	automationPracticeFormPage.inputData(firstName, lastName, email, gender, mobile, dateOFBirth, subjects, hobbies, picture, currentAddress, stateAndCity);
+	
 	
 	
 	
