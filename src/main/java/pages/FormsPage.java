@@ -10,7 +10,7 @@ public class FormsPage extends Page {
 	}
 
 	public AutomationPracticeFormPage clickOnPracticeForm() {
-		testBase.driver.findElement(lblPracticeFormsPage);
+		testBase.clickOnElement(lblPracticeFormsPage);
 		return new AutomationPracticeFormPage(webDriver);
 	}
 }
