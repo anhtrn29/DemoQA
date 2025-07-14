@@ -41,7 +41,7 @@ public class TestBase {
 	
 	public void zoomOut(String percentage) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("document.body.style.zoom='"+percentage+"'");
+        js.executeScript("document.body.style.zoom ='"+percentage+"'");
 	}
 	
 	public void clickOnElement(By locator) {
@@ -70,11 +70,11 @@ public class TestBase {
 	
 	public void findAndSelectComboBox(By locator, String multipleValue) {
 		String[] multipleValues = multipleValue.split(",");
-		WebElement element = driver.findElement(locator);
-		element.click();
+		WebElement comboBoxElement = driver.findElement(locator);
+		comboBoxElement.click();
 		for(int i = 0;i<multipleValues.length;i++) {
-			element.sendKeys(multipleValues[i].trim());
-			element.sendKeys(Keys.ENTER);		
+			comboBoxElement.sendKeys(multipleValues[i].trim());
+			comboBoxElement.sendKeys(Keys.ENTER);		
 	
 		}
 	}

@@ -7,7 +7,7 @@ public class AutomationPracticeFormPage extends Page {
 
 	public By txtFirstName=By.id("firstName");
 	public By txtLastName=By.id("lastName");
-	public By txtEmail=By.id("userEmail");
+	public By txtEmail=By.id("userEmail");	
 	public String rdGenderStr="//label[text()='{@param}']";
 	public By txtMobile=By.id("userNumber");
 	public By txtDateOfBirth=By.id("dateOfBirthInput");
@@ -23,6 +23,7 @@ public class AutomationPracticeFormPage extends Page {
 	public By cbCity = By.id("city");
 	public By cbtCityInput = By.id("react-select-4-input");		
 	public By btnSubmit =By.id("submit");
+	public String valueStr = "//td[text()='{@param}']/following-sibling::td";
 	public AutomationPracticeFormPage(WebDriver dr) {
 		super(dr);
 	}
@@ -35,7 +36,7 @@ public class AutomationPracticeFormPage extends Page {
 		By rdGenderLocator = testBase.getXpathByParam(rdGenderStr, gender);
 		testBase.clickOnElement(rdGenderLocator);
 		testBase.input(txtMobile, mobile);
-		inputDate(dateOFBirth);
+		inputDate(dateOFBirth);	
 		testBase.findAndSelectComboBox(txtSubject, subjects);
 		testBase.selectCheckBox(rdHobbiesStr, hobbies);
 		testBase.input(upLoadPic, picture);
@@ -56,6 +57,23 @@ public class AutomationPracticeFormPage extends Page {
 		testBase.clickOnElement(lbDateXpath);
 	}
 	
-		
+	
+	public String getValueByFieldName(String originalXpath, String fieldName) {
+		By studentNameLocator = testBase.getXpathByParam(valueStr,fieldName);
+		String fullText = testBase.driver.findElement(studentNameLocator).getText();
+		return fullText;
+	}
 
+	public String formatDate(String originalDate) {
+		String result ="";
+		String[] originalDates = originalDate.split(" ");
+		String originalDay = originalDates[0].trim();
+		int convertedDate =Integer.parseInt(originalDay);
+		if(convertedDate<10) {
+			result="0" + originalDay + " " + originalDates[1].trim() + "," + originalDates[2].trim(); 
+		} else {
+			result = originalDay + " " + originalDates[1].trim() + "," + originalDates[2].trim();
+		}
+		return result;
+	}
 }

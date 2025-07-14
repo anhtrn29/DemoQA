@@ -19,7 +19,7 @@ public class TextBoxTest extends TestCase {
 		String permanentAddress = "a";
 		HomePage homePage = new HomePage(testBase.driver);
 		ElementsPage elementsPage = homePage.clickOnElements();
-		TextBoxPage textBoxPage = elementsPage.clickOnTextBox();
+		TextBoxPage textBoxPage = elementsPage.clickOnTextBoxPage();
 		textBoxPage.inputData(fullName, email, currentAddress, permanentAddress);
 		String actualName = textBoxPage.getActualResult(textBoxPage.lblName);
 		String actualEmail = textBoxPage.getActualResult(textBoxPage.lblEmail);
@@ -39,7 +39,7 @@ public class TextBoxTest extends TestCase {
 		String permanentAddress ="a";
 		HomePage homePage = new HomePage(testBase.driver);
 		ElementsPage elementsPage = homePage.clickOnElements();
-		TextBoxPage textBoxPage = elementsPage.clickOnTextBox();
+		TextBoxPage textBoxPage = elementsPage.clickOnTextBoxPage();
 		textBoxPage.inputData(fullName, email, currentAddress, permanentAddress);
 		String actualResult = textBoxPage.getActualResult(textBoxPage.txtEmail);
 		assertTrue(actualResult.contains("field-error"));
