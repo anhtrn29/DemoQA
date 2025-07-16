@@ -13,7 +13,7 @@ public class CheckBoxTest extends TestCase {
 	public void testSelectHomeCheckBox() {
 		HomePage homePage = new HomePage(testBase.driver);
 		ElementsPage elementsPage = homePage.clickOnElements();
-		CheckBoxPage checkBoxPage = elementsPage.clickOnCheckBox();
+		CheckBoxPage checkBoxPage = elementsPage.clickOnCheckBoxPage();
 		checkBoxPage.expandAllCheckBox();
 		checkBoxPage.selectHomeCheckBox();
 		String actualResultCheckBox = checkBoxPage.getActualResult(checkBoxPage.resultText);

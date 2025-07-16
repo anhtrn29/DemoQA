@@ -11,17 +11,17 @@ public class ElementsPage extends Page {
 		super(dr);
 	}
 	
-	public TextBoxPage  clickOnTextBox() {
+	public TextBoxPage  clickOnTextBoxPage() {
 		testBase.clickOnElement(lblTextBox);
 		return new TextBoxPage(webDriver);
 	}
 	
-	public CheckBoxPage clickOnCheckBox() {
+	public CheckBoxPage clickOnCheckBoxPage() {
 		testBase.clickOnElement(lblCheckBox);
 		return new CheckBoxPage(webDriver);
 	}
 	
-	public RadioButtonPage clickOnRadioButton() {
+	public RadioButtonPage clickOnRadioButtonPage() {
 		testBase.driver.findElement(lblRadioButton);
 		return new RadioButtonPage(webDriver);
 	}

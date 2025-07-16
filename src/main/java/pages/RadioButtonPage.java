@@ -3,34 +3,21 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RadioButtonPage extends Page {
-	public By lblRadioButton = By.xpath("//span[text()='Radio Button']");
-	public By clickYes=By.xpath("//label[for='yesRadio']");
-	public By resultText = By.className("text-success");
-	public WebDriverWait wait;
+	public By rdSelectValue = By.id("yesRadio");
+	public By resultText = By.xpath("//span[@class='text-success']");
 	public RadioButtonPage(WebDriver dr) {
 		super(dr);
 	}
 
-	public void open() {
-		WebElement tab = wait.until(ExpectedConditions.elementToBeClickable(lblRadioButton));
-		tab.click();
-	}
 	public void selectRadioButton(String labelText) {
-		
+		testBase.driver.findElement(rdSelectValue).click();
 	}
-	
-	public void clickYesRadio() {
-		testBase.driver.findElement(clickYes).click();
 		
-	}
-	
-	public String getResultText() {
-		return testBase.driver.findElement(By.className("text-success")).getText();
+	public String getActualResult(By resultText) {
+		testBase.driver.findElement(resultText).getText().toLowerCase();
+		return getActualResult(resultText);
 	}
 	
 }
