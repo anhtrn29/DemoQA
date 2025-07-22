@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import tests.models.StudentRegistrationForm;
 public class AutomationPracticeFormPage extends Page {
 
 	public By txtFirstName=By.id("firstName");
@@ -27,26 +29,29 @@ public class AutomationPracticeFormPage extends Page {
 		super(dr);
 	}
 	
-	public void inputData(String firstName, String lastName, String email, String gender, String mobile, String dateOFBirth, String subjects, String hobbies, String picture, String currentAddress, String state, String city ) {
+	public void inputData(StudentRegistrationForm st) {
 		testBase.zoomOut("70%");
-		testBase.input(txtFirstName, firstName);
-		testBase.input(txtLastName, lastName);
-		testBase.input(txtEmail, email);
-		By rdGenderLocator = testBase.getXpathByParam(rdGenderStr, gender);
+		testBase.input(txtFirstName, st.firstName);
+		testBase.input(txtLastName, st.lastName);
+		testBase.input(txtEmail, st.email);
+		By rdGenderLocator = testBase.getXpathByParam(rdGenderStr, st.gender);
 		testBase.clickOnElement(rdGenderLocator);
-		testBase.input(txtMobile, mobile);
-		inputDate(dateOFBirth);	
-		testBase.findAndSelectComboBox(txtSubject, subjects);
-		testBase.selectCheckBox(rdHobbiesStr, hobbies);
-		testBase.input(upLoadPic, picture);
-		testBase.input(txtCurrentAddress, currentAddress);
-		testBase.findAndSelectComboBoxWithSingleValue(cbState, cbStateInput, state);
-		testBase.findAndSelectComboBoxWithSingleValue(cbCity, cbtCityInput, city);
+		testBase.input(txtMobile, st.mobile);
+		inputDate(st.dateOfBirth);	
+		testBase.findAndSelectComboBox(txtSubject, st.subjects);
+		testBase.selectCheckBox(rdHobbiesStr, st.hobbies);
+		testBase.input(upLoadPic, st.picture);
+		testBase.input(txtCurrentAddress, st.currentAddress);
+		testBase.findAndSelectComboBoxWithSingleValue(cbState, cbStateInput, st.state);
+		testBase.findAndSelectComboBoxWithSingleValue(cbCity, cbtCityInput, st.city);
 		testBase.clickOnElement(btnSubmit);
 		
 	}
 	
-	
+	/**
+	 * 
+	 * @param dateOfBirth:DD MMM YYYY
+	 */
 	public void inputDate(String dateOfBirth) {
 		String[] dateOfBirths = dateOfBirth.split(" ");
 		testBase.clickOnElement(txtDateOfBirth);

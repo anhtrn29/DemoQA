@@ -1,11 +1,6 @@
-package tests;
+package tests.models;
 
-import org.openqa.selenium.WebDriver;
-
-import pages.Page;
-
-public class StudentRegistrationForm extends Page {
-	public static WebDriver dr;
+public class StudentRegistrationForm  {
 	public String firstName;
 	public String lastName;
 	public String email;
@@ -18,9 +13,5 @@ public class StudentRegistrationForm extends Page {
 	public String currentAddress;
 	public String state;
 	public String city;
-
-	public StudentRegistrationForm() {
-		super(dr);
-	}
 
 }
